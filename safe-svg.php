@@ -446,7 +446,7 @@ if ( ! class_exists( 'SafeSvg\\safe_svg' ) ) {
 			if ( get_post_mime_type( $attachment_id ) === 'image/svg+xml' ) {
 				$dimensions = $this->get_svg_dimensions( $attachment_id, $size );
 
-				if ( $dimensions && $dimensions['height'] && $dimensions['width'] ) {
+				if ( is_array( $dimensions ) && isset( $dimensions['height'], $dimensions['width'] ) ) {
 					$image[1] = $dimensions['width'];
 					$image[2] = $dimensions['height'];
 				} else {
@@ -502,7 +502,7 @@ if ( ! class_exists( 'SafeSvg\\safe_svg' ) ) {
 			if ( 'image/svg+xml' === $mime ) {
 				$dimensions = $this->get_svg_dimensions( $id, $size );
 
-				if ( $dimensions['height'] && $dimensions['width'] ) {
+				if ( is_array( $dimensions ) && isset( $dimensions['height'], $dimensions['width'] ) ) {
 					$html = str_replace( 'width="1" ', sprintf( 'width="%s" ', $dimensions['width'] ), $html );
 					$html = str_replace( 'height="1" ', sprintf( 'height="%s" ', $dimensions['height'] ), $html );
 				} else {
@@ -796,7 +796,6 @@ if ( ! class_exists( 'SafeSvg\\safe_svg' ) ) {
 
 			return $dimensions;
 		}
-
 	}
 }
 
