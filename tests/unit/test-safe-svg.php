@@ -208,6 +208,7 @@ class SafeSvgTest extends TestCase {
 				'return_in_order' => array(
 					__DIR__ . '/files/svgCleanOne.svg',
 					__DIR__ . '/files/svgNoDimensions.svg',
+					__DIR__ . '/files/svgCleanOne.svg',
 				),
 			)
 		);
@@ -295,6 +296,19 @@ class SafeSvgTest extends TestCase {
 			array(
 				1 => 100,
 				2 => 100,
+			),
+			$image_sizes
+		);
+
+		// Test Custom Dimensions
+		$image_sizes = $this->instance->one_pixel_fix( array(), 1, [ 500, 500 ], false );
+		if ( ! empty( $image_sizes ) ) {
+			$image_sizes = array_map( 'intval', $image_sizes );
+		}
+		$this->assertSame(
+			array(
+				1 => 500,
+				2 => 500,
 			),
 			$image_sizes
 		);
