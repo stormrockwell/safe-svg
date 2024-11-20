@@ -330,6 +330,11 @@ if ( ! class_exists( 'SafeSvg\\safe_svg' ) ) {
 				}
 			}
 
+			// Allow large SVGs if the setting is on.
+			if ( get_option( 'safe_svg_large_svg' ) ) {
+				$this->sanitizer->setAllowHugeFiles( true );
+			}
+
 			/**
 			 * Load extra filters to allow devs to access the safe tags and attrs by themselves.
 			 */
