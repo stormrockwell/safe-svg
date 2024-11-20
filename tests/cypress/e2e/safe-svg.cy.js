@@ -15,6 +15,24 @@ describe('Safe SVG Tests', () => {
     });
   });
 
+  it('Admin can add SVG block to a post', () => {
+	cy.uploadMedia('.wordpress-org/icon.svg');
+
+	cy.createPost( {
+		title: 'SVG Block Test',
+		beforeSave: () => {
+			cy.insertBlock( 'safe-svg/svg-icon' );
+			cy.getBlockEditor().find( '.block-editor-media-placeholder' ).contains( 'button', 'Media Library' ).click();
+			cy.get( '#menu-item-browse' ).click();
+			cy.get( '.attachments-wrapper li:first .thumbnail' ).click();
+			cy.get( '.media-modal .media-button-select' ).click();
+		},
+	} ).then( post => {
+		cy.visit( `/wp-admin/post.php?post=${post.id}&action=edit` );
+		cy.getBlockEditor().find( '.wp-block-safe-svg-svg-icon' );
+	} );
+  } );
+
   /**
    * Flow for verify SVG sanitization.
    *
