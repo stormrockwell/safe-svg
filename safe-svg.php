@@ -256,7 +256,7 @@ if ( ! class_exists( 'SafeSvg\\safe_svg' ) ) {
 				return $file;
 			}
 
-			$file_name   = isset( $file['name'] ) ? $file['name'] : '';
+			$file_name = isset( $file['name'] ) ? $file['name'] : '';
 
 			// Allow SVGs to be uploaded when this function runs.
 			add_filter( 'upload_mimes', array( $this, 'allow_svg' ) );
@@ -269,7 +269,7 @@ if ( ! class_exists( 'SafeSvg\\safe_svg' ) ) {
 			// This is because wp_check_filetype_and_ext() is called multiple times during the upload process.
 			add_filter( 'pre_move_uploaded_file', array( $this, 'pre_move_uploaded_file' ) );
 
-			$type        = ! empty( $wp_filetype['type'] ) ? $wp_filetype['type'] : '';
+			$type = ! empty( $wp_filetype['type'] ) ? $wp_filetype['type'] : '';
 
 			if ( 'image/svg+xml' === $type ) {
 				if ( ! $this->current_user_can_upload_svg() ) {
