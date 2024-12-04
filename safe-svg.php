@@ -133,6 +133,7 @@ if ( ! class_exists( 'SafeSvg\\safe_svg' ) ) {
 			add_action( 'load-post-new.php', array( $this, 'allow_svg_from_upload' ) );
 			add_action( 'load-post.php', array( $this, 'allow_svg_from_upload' ) );
 			add_action( 'load-site-editor.php', array( $this, 'allow_svg_from_upload' ) );
+			add_action( 'load-edit-tags.php', array( $this, 'allow_svg_from_upload' ) );
 
 			// Init all the things.
 			add_action( 'init', array( $this, 'setup_blocks' ) );
