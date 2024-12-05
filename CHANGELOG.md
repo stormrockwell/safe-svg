@@ -392,6 +392,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 - Initial Release.
 
 [Unreleased]: https://github.com/10up/safe-svg/compare/trunk...develop
+[2.3.1]: https://github.com/10up/safe-svg/compare/2.3.0...2.3.1
 [2.3.0]: https://github.com/10up/safe-svg/compare/2.2.6...2.3.0
 [2.2.6]: https://github.com/10up/safe-svg/compare/2.2.5...2.2.6
 [2.2.5]: https://github.com/10up/safe-svg/compare/2.2.4...2.2.5
